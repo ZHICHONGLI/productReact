@@ -1,0 +1,9 @@
+.frontview-component {
+  border: 1px dashed #f00;
+}
+
+#fronttitle{
+  color: indianred;
+  font-size: 28px;
+  text-align: center
+}
