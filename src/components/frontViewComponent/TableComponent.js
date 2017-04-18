@@ -18,7 +18,7 @@ class TableComponent extends React.Component {
     return (
       <div className="table-component">
         <div className="panel panel-default">
-            <div id="fixheading" className="panel-heading"><PanelHeaderComponent /></div>
+            <div id="fixheading" className="panel-heading"><PanelHeaderComponent dataList={this.props.dataList} /></div>
             <div className="panel-body">
               <TableBodyComponent dataList={this.props.dataList} />
             </div>

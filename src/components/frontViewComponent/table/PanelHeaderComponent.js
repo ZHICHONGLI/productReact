@@ -11,7 +11,7 @@ class PanelHeaderComponent extends React.Component {
   render() {
     return (
       <div className="panelheader-component row">
-        <div className="col-md-8">List of Products</div>
+        <div className="col-md-8">List of <span id="totalnum">{this.props.dataList.length}</span> Products</div>
         <div className="col-md-4">
           <div className="input-group">
             <span className="input-group-addon"><i className="fa fa-search" aria-hidden="true"></i></span>
