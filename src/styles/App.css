@@ -1,8 +1,4 @@
 /* Base Application Styles */
-body {
-  color: #fff;
-  background: #222;
-}
 
 .index img {
   margin: 40px auto;
@@ -18,4 +14,9 @@ body {
   border: 1px solid #000;
   border-width: 1px 0;
   background: #666;
+}
+
+.nav{
+  background-color: #e3f2fd !important;
+  width: 100%
 }

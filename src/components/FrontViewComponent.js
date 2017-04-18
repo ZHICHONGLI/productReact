@@ -1,6 +1,8 @@
 'use strict';
 
 import React from 'react';
+import {Button} from 'react-bootstrap';
+import TableComponent from './frontViewComponent/TableComponent';
 
 require('styles//FrontView.css');
 
@@ -12,22 +14,22 @@ class FrontViewComponent extends React.Component {
       value: 1
     }
   }
-
-  changeStr(e){
-    
-    this.setState({
-      str: 'newstring'
-    })
-    console.log(this);
-    
+  componentDidMount(){
+    //console.log(this.props.dataList)
+  }
+  test(){
+    console.log(this.props.dataList);
   }
   render() {
     return (
-      <div className="frontview-component">
-        <div id="fronttitle">This is FrontView</div>
-        <div>{this.state.str}</div>
-        <p>{this.state.value}</p>
-        <button onClick={this.changeStr.bind(this)}>change</button>
+      <div className="frontview-component container-fluid">
+        <h1>Products</h1>
+                <Button bsStyle="primary" bsSize="large"><i className="fa fa-plus" aria-hidden="true" /> Add New Product</Button>
+                <TableComponent className="row" {...this.props}/>
+                <div> This is
+                    for testing...
+                </div>
+                <Button onClick={this.test.bind(this)}>FV Test</Button>
       </div>
     );
   }
