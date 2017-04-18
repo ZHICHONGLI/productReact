@@ -1,0 +1,7 @@
+.topbtn-component {
+  bottom: 15px;
+  right: 10px;
+  position: fixed;
+  z-index: 100;
+  height: 55px
+}
