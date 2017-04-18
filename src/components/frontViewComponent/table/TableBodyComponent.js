@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {Table} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 
 require('styles/frontViewComponent/table/TableBody.css');
 
@@ -23,7 +23,10 @@ class TableBodyComponent extends React.Component {
               <td>{item.Packing}</td>
               <td>{item.Description}</td>
               <td>{item.Status}</td>
-              <td></td>
+              <td>
+                <Button><i className="fa fa-pencil-square-o " aria-hidden="true " /></Button>
+                <Button><i className="fa fa-trash " aria-hidden="true " /></Button>
+              </td>
             </tr>
     return el;
             
