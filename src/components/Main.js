@@ -36,20 +36,8 @@ class AppComponent extends React.Component {
     }
     handleScroll(){
         let scrollTop = window.scrollY;
-        console.log(scrollTop);
         scrollTop>200 ? this.setState({showTop:true}) :this.setState({showTop:false});
 
-    /*  if(scrollTop >200){
-        // console.log("++")
-        this.setState({showTop: ''});
-        //console.log(this.state.showTop);
-        
-      }else{
-        // console.log("--")
-        this.setState({showTop: 'hide'});
-        //console.log(this.state.showTop);
-        
-      }  */
     
     }
     childProps(e){

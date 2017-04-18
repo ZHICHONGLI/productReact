@@ -6,12 +6,20 @@ import {Table, Button} from 'react-bootstrap';
 require('styles/frontViewComponent/table/TableBody.css');
 
 class TableBodyComponent extends React.Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-       
+       editShow: false,
+       activeItem: {}
     }
   }
+  stockEdit(item){
+    this.setState({editShow: true, activeItem : item})
+  }
+  test(item){
+    console.dir(item);
+  }
+
   tbBody(item){
     let idx = this.props.dataList.indexOf(item)+1;
     let el = <tr key={item.id}>
@@ -19,12 +27,20 @@ class TableBodyComponent extends React.Component {
               <td>{item.id}</td>
               <td>{item.Name}</td>
               <td>{item.Price}</td>
-              <td>{item.Stock}</td>
+              <td className={this.state.activeItem == item?'hide':''}>
+                <span className="stock" onClick={()=>this.setState({activeItem:item})}>{item.Stock}</span>
+              </td>
+              <td  className={this.state.activeItem == item? '':'hide'}>
+                <span><input className="form-control" placeholder={item.Stock}></input></span>
+                <span className="stock">update </span>
+                | 
+                <span className="stock" onClick={()=>this.setState({activeItem:{}})}> cancel</span>
+              </td>
               <td>{item.Packing}</td>
               <td>{item.Description}</td>
               <td>{item.Status}</td>
               <td>
-                <Button><i className="fa fa-pencil-square-o " aria-hidden="true " /></Button>
+                <Button onClick={()=>this.test(item)}><i className="fa fa-pencil-square-o " aria-hidden="true " /></Button>
                 <Button><i className="fa fa-trash " aria-hidden="true " /></Button>
               </td>
             </tr>
