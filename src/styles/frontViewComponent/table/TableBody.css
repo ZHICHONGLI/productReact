@@ -3,5 +3,6 @@
 }
 .stock:hover{
   background-color: lightgreen;
-  cursor: pointer
+  cursor: pointer;
+  text-align: center
 }

@@ -20,7 +20,7 @@ class TableComponent extends React.Component {
         <div className="panel panel-default">
             <div id="fixheading" className="panel-heading"><PanelHeaderComponent dataList={this.props.dataList} /></div>
             <div className="panel-body">
-              <TableBodyComponent dataList={this.props.dataList} />
+              <TableBodyComponent {...this.props} />
             </div>
         </div>
         <Button onClick={this.test.bind(this)}>Tc Test</Button>

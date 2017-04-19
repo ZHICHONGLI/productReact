@@ -19,6 +19,10 @@ class TableBodyComponent extends React.Component {
   test(item){
     console.dir(item);
   }
+  statusEdit(item){
+    item.Status = !item.Status;
+    this.props.handleStatus(item);
+  }
 
   tbBody(item){
     let idx = this.props.dataList.indexOf(item)+1;
@@ -38,7 +42,7 @@ class TableBodyComponent extends React.Component {
               </td>
               <td>{item.Packing}</td>
               <td>{item.Description}</td>
-              <td><Button bsStyle={item.Status?"success":"default"}>{item.Status?'Available':'Unavailable'}</Button></td>
+              <td><Button bsStyle={item.Status?"success":"default"} onClick={()=>this.statusEdit(item)} ref={(buttonDOM) => { this.buttonDOM = buttonDOM; }}>{item.Status?'Available':'Unavailable'}</Button></td>
               <td>
                 <Button onClick={()=>this.test(item)}><i className="fa fa-pencil-square-o " aria-hidden="true " /></Button>
                 <Button><i className="fa fa-trash " aria-hidden="true " /></Button>

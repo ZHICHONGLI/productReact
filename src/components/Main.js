@@ -59,11 +59,16 @@ class AppComponent extends React.Component {
             }
         )
     }
+    handleStatus(item){
+        let idx = this.state.dataList.findIndex(x => x._id == item._id);
+        this.state.dataList[idx] = item;
+        this.setState({dataList:this.state.dataList});
+    }
     render() {
         return (
             <div className = "index" >
                 <NavbarComponent />
-                <FrontViewComponent dataList={this.state.dataList} />
+                <FrontViewComponent dataList={this.state.dataList} handleStatus={(item)=>this.handleStatus(item)} />
                 <Button onClick={this.test.bind(this)}>test http ewsponse</Button>
                 {this.state.showTop?<TopBtnComponent />:null}
                 
