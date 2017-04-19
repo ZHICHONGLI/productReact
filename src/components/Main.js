@@ -69,11 +69,19 @@ class AppComponent extends React.Component {
         this.state.dataList[idx].Stock = v;
         this.setState({dataList: this.state.dataList})
     }
+    deleteHandle(i){
+        let idx = this.state.dataList.indexOf(i);
+        this.state.dataList.splice(idx,1);
+        this.setState({dataList: this.state.dataList})
+    }
     render() {
         return (
             <div className = "index" >
                 <NavbarComponent />
-                <FrontViewComponent dataList={this.state.dataList} handleStatus={(item)=>this.handleStatus(item)} stockHandle={(item, v)=>this.stockHandle(item, v)}/>
+                <FrontViewComponent dataList={this.state.dataList}
+                                    handleStatus={(item)=>this.handleStatus(item)}
+                                    stockHandle={(item, v)=>this.stockHandle(item, v)}
+                                    deleteHandle={(v)=> this.deleteHandle(v)} />
                 <Button onClick={this.test.bind(this)}>test http ewsponse</Button>
                 {this.state.showTop?<TopBtnComponent />:null}
                 
