@@ -22,7 +22,7 @@ class TableBodyComponent extends React.Component {
 
   tbBody(item){
     let idx = this.props.dataList.indexOf(item)+1;
-    let el = <tr key={item.id}>
+    let el = <tr>
               <td>{idx}</td>
               <td>{item.id}</td>
               <td>{item.Name}</td>
@@ -30,15 +30,15 @@ class TableBodyComponent extends React.Component {
               <td className={this.state.activeItem == item?'hide':''}>
                 <span className="stock" onClick={()=>this.setState({activeItem:item})}>{item.Stock}</span>
               </td>
-              <td  className={this.state.activeItem == item? '':'hide'}>
+              <td className={this.state.activeItem == item? '':'hide'}>
                 <span><input className="form-control" placeholder={item.Stock}></input></span>
                 <span className="stock">update </span>
-                | 
+                |
                 <span className="stock" onClick={()=>this.setState({activeItem:{}})}> cancel</span>
               </td>
               <td>{item.Packing}</td>
               <td>{item.Description}</td>
-              <td>{item.Status}</td>
+              <td><Button bsStyle={item.Status?"success":"default"}>{item.Status?'Available':'Unavailable'}</Button></td>
               <td>
                 <Button onClick={()=>this.test(item)}><i className="fa fa-pencil-square-o " aria-hidden="true " /></Button>
                 <Button><i className="fa fa-trash " aria-hidden="true " /></Button>
