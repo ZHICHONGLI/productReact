@@ -15,10 +15,10 @@ class AppComponent extends React.Component {
     constructor(props) {
     super(props);
     this.state = {
-      childName: 'Initial-Name',
       dataList: [],
-      showTop : false
-      
+      showTop : false,
+      filterList: [],
+      filtering: false
     }
   }
     
@@ -33,6 +33,8 @@ class AppComponent extends React.Component {
             .catch(err => console.log(err));   */
         window.addEventListener('scroll', this.handleScroll.bind(this));
         this.setState({dataList: jsonData});
+        this.setState({filterList: this.state.dataList});
+        //console.dir(this.state.dataList);
     }
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll).bind(this);
@@ -40,25 +42,8 @@ class AppComponent extends React.Component {
     handleScroll(){
         let scrollTop = window.scrollY;
         scrollTop>200 ? this.setState({showTop:true}) :this.setState({showTop:false});
-
-    
-    }
-    childProps(e){
-        this.setState(
-            {childName : 'ChildName Changed',
-                showTop: true
-            }
-        )
     }
 
-    test(){
-        console.log(this.state.dataList);
-        this.setState(
-            {childName : 'ChildName Changed',
-                showTop: true
-            }
-        )
-    }
     handleStatus(item){
         let idx = this.state.dataList.findIndex(x => x._id == item._id);
         this.state.dataList[idx] = item;
@@ -71,17 +56,46 @@ class AppComponent extends React.Component {
     }
     deleteHandle(i){
         let idx = this.state.dataList.indexOf(i);
+        let idxFilter = this.state.filterList.indexOf(i);
         this.state.dataList.splice(idx,1);
-        this.setState({dataList: this.state.dataList})
+        this.state.filterList.splice(idxFilter,1);
+        this.setState({dataList: this.state.dataList,
+                       filterList: this.state.filterList
+                })
     }
+    handleSearch(key){
+        if(!key){
+            this.setState({filterList: this.state.dataList,
+                           filtering : false
+        });
+            console.log(this.state.filterList);
+        }
+        console.log(key);
+        let searchKey = key.toString().toLowerCase();
+        let searchResult = [];
+        for(let i = 0; i < this.state.dataList.length; i++){
+            let name = this.state.dataList[i].Name.toLowerCase();
+            let des = this.state.dataList[i].Description.toLowerCase();
+            if(name.indexOf(searchKey)!== -1 || des.indexOf(searchKey)!== -1){
+                searchResult.push(this.state.dataList[i]);
+            }
+        }
+        this.setState({filterList: searchResult});
+        if(key) {
+            console.log(this.state.filterList);
+            this.setState({filtering: true})
+        };
+    }  
     render() {
         return (
             <div className = "index" >
                 <NavbarComponent />
-                <FrontViewComponent dataList={this.state.dataList}
+                <FrontViewComponent dataList={this.state.filtering?this.state.filterList:this.state.dataList}
+                                    filterList={this.state.filterList}
                                     handleStatus={(item)=>this.handleStatus(item)}
                                     stockHandle={(item, v)=>this.stockHandle(item, v)}
-                                    deleteHandle={(v)=> this.deleteHandle(v)} />
+                                    deleteHandle={(v)=> this.deleteHandle(v)} 
+                                    handleSearch={(key)=>this.handleSearch(key)} />
                 {this.state.showTop?<TopBtnComponent />:null}
                 
                 

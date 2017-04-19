@@ -18,9 +18,6 @@ class TableBodyComponent extends React.Component {
   stockEdit(item){
     this.setState({editShow: true, activeItem : item})
   }
-  test(item){
-    console.dir(item);
-  }
   statusEdit(item){
     item.Status = !item.Status;
     this.props.handleStatus(item);

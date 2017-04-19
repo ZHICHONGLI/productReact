@@ -10,15 +10,16 @@ require('styles/frontViewComponent/Table.css');
 class TableComponent extends React.Component {
     constructor(props) {
     super(props);
-  }
-  test(){
-    console.log(this.props.dataList);
+    this.state = {
+    }
   }
   render() {
     return (
       <div className="table-component">
         <div className="panel panel-default">
-            <div id="fixheading" className="panel-heading"><PanelHeaderComponent dataList={this.props.dataList} /></div>
+            <div id="fixheading" className="panel-heading">
+              <PanelHeaderComponent {...this.props} />
+            </div>
             <div className="panel-body">
               <TableBodyComponent {...this.props} />
             </div>

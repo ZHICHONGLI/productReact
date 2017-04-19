@@ -10,15 +10,10 @@ class FrontViewComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      str: 'initstring',
-      value: 1
     }
   }
   componentDidMount(){
     //console.log(this.props.dataList)
-  }
-  test(){
-    console.log(this.props.dataList);
   }
   render() {
     return (
