@@ -10,7 +10,8 @@ class TableBodyComponent extends React.Component {
     super(props);
     this.state = {
        editShow: false,
-       activeItem: {}
+       activeItem: {},
+       stockValue: undefined
     }
   }
   stockEdit(item){
@@ -23,7 +24,13 @@ class TableBodyComponent extends React.Component {
     item.Status = !item.Status;
     this.props.handleStatus(item);
   }
-
+  stockUpdate(item, v){
+    this.props.stockHandle(item, v);
+    this.setState({activeItem:{},stockValue:''})
+  }
+  handleChange(event){
+    this.setState({stockValue: event.target.value})
+  }
   tbBody(item){
     let idx = this.props.dataList.indexOf(item)+1;
     let el = <tr>
@@ -35,10 +42,10 @@ class TableBodyComponent extends React.Component {
                 <span className="stock" onClick={()=>this.setState({activeItem:item})}>{item.Stock}</span>
               </td>
               <td className={this.state.activeItem == item? '':'hide'}>
-                <span><input className="form-control" placeholder={item.Stock}></input></span>
-                <span className="stock">update </span>
+                <span><input type="number" className="form-control" placeholder={item.Stock} value={this.state.stockValue} onChange={this.handleChange.bind(this)}></input></span>
+                <span className="stock" onClick={()=>this.stockUpdate(item, this.state.stockValue)}>update </span>
                 |
-                <span className="stock" onClick={()=>this.setState({activeItem:{}})}> cancel</span>
+                <span className="stock" onClick={()=>this.setState({activeItem:{}, stockValue:''})}> cancel</span>
               </td>
               <td>{item.Packing}</td>
               <td>{item.Description}</td>

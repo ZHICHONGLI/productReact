@@ -64,11 +64,16 @@ class AppComponent extends React.Component {
         this.state.dataList[idx] = item;
         this.setState({dataList:this.state.dataList});
     }
+    stockHandle(item, v){
+        let idx = this.state.dataList.indexOf(item);
+        this.state.dataList[idx].Stock = v;
+        this.setState({dataList: this.state.dataList})
+    }
     render() {
         return (
             <div className = "index" >
                 <NavbarComponent />
-                <FrontViewComponent dataList={this.state.dataList} handleStatus={(item)=>this.handleStatus(item)} />
+                <FrontViewComponent dataList={this.state.dataList} handleStatus={(item)=>this.handleStatus(item)} stockHandle={(item, v)=>this.stockHandle(item, v)}/>
                 <Button onClick={this.test.bind(this)}>test http ewsponse</Button>
                 {this.state.showTop?<TopBtnComponent />:null}
                 
