@@ -23,7 +23,6 @@ class TableComponent extends React.Component {
               <TableBodyComponent {...this.props} />
             </div>
         </div>
-        <Button onClick={this.test.bind(this)}>Tc Test</Button>
       </div>
     );
   }

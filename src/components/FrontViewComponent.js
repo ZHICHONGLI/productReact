@@ -26,10 +26,6 @@ class FrontViewComponent extends React.Component {
         <h1>Products</h1>
                 <Button bsStyle="primary" bsSize="large"><i className="fa fa-plus" aria-hidden="true" /> Add New Product</Button>
                 <TableComponent className="row" {...this.props}/>
-                <div> This is
-                    for testing...
-                </div>
-                <Button onClick={this.test.bind(this)}>FV Test</Button>
       </div>
     );
   }

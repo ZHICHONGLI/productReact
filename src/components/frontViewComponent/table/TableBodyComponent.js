@@ -38,12 +38,12 @@ class TableBodyComponent extends React.Component {
               <td>{idx}</td>
               <td>{item.id}</td>
               <td>{item.Name}</td>
-              <td>{item.Price}</td>
+              <td>$ {item.Price}</td>
               <td className={this.state.activeItem == item?'hide':''}>
                 <span className="stock" onClick={()=>this.setState({activeItem:item})}>{item.Stock}</span>
               </td>
               <td className={this.state.activeItem == item? '':'hide'}>
-                <span><input type="number" className="form-control" placeholder={item.Stock} value={this.state.stockValue} onChange={this.handleChange.bind(this)}></input></span>
+                <span><input type="number" className="form-control stockinput" placeholder={item.Stock} value={this.state.stockValue} onChange={this.handleChange.bind(this)}></input></span>
                 <span className="stock" onClick={()=>this.stockUpdate(item, this.state.stockValue)}>update </span>
                 |
                 <span className="stock" onClick={()=>this.setState({activeItem:{}, stockValue:''})}> cancel</span>

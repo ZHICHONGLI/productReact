@@ -82,7 +82,6 @@ class AppComponent extends React.Component {
                                     handleStatus={(item)=>this.handleStatus(item)}
                                     stockHandle={(item, v)=>this.stockHandle(item, v)}
                                     deleteHandle={(v)=> this.deleteHandle(v)} />
-                <Button onClick={this.test.bind(this)}>test http ewsponse</Button>
                 {this.state.showTop?<TopBtnComponent />:null}
                 
                 
