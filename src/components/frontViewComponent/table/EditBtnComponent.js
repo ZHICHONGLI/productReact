@@ -9,14 +9,17 @@ class EditBtnComponent extends React.Component {
   constructor(props) {
   super(props);
   this.state ={
-    showModal : false
+    showModal : false,
+    item : this.props.item
   }
   }
   close() {
     this.setState({ showModal: false });
   }
   open() {
-    this.setState({ showModal: true });
+    this.setState({ showModal: true,
+                    item: this.props.item
+   });
   }
   render() {
     let modalEl = <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
@@ -24,6 +27,10 @@ class EditBtnComponent extends React.Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <div className="input-group">
+              <span className="input-group-addon" id="basic-addon1">Name</span>
+              <input type="text" className="form-control" placeholder={this.props.item.Name} value={this.state.item.Name} aria-describedby="basic-addon1" />
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close.bind(this)}>Close</Button>

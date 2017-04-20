@@ -3,6 +3,7 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
 import TableComponent from './frontViewComponent/TableComponent';
+import AddBtnComponent from './frontViewComponent/AddBtnComponent';
 
 require('styles//FrontView.css');
 
@@ -19,7 +20,7 @@ class FrontViewComponent extends React.Component {
     return (
       <div className="frontview-component container-fluid">
         <h1>Products</h1>
-                <Button bsStyle="primary" bsSize="large"><i className="fa fa-plus" aria-hidden="true" /> Add New Product</Button>
+                <AddBtnComponent {...this.props} />
                 <TableComponent className="row" {...this.props}/>
       </div>
     );

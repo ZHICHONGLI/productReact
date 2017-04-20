@@ -85,7 +85,12 @@ class AppComponent extends React.Component {
             console.log(this.state.filterList);
             this.setState({filtering: true})
         }
-    } 
+    }
+    addHandel(item){
+        //console.dir(item);
+        this.state.dataList.push(item);
+        this.setState({dataList: this.state.dataList})
+    }
     render() {
         return (
             <div className = "index" >
@@ -95,7 +100,8 @@ class AppComponent extends React.Component {
                                     handleStatus={(item)=>this.handleStatus(item)}
                                     stockHandle={(item, v)=>this.stockHandle(item, v)}
                                     deleteHandle={(v)=> this.deleteHandle(v)}
-                                    handleSearch={(key)=>this.handleSearch(key)} />
+                                    handleSearch={(key)=>this.handleSearch(key)} 
+                                    addHandel={(item)=>this.addHandel(item)} />
                 {this.state.showTop?<TopBtnComponent />:null}
                 
                 
