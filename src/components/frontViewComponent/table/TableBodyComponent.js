@@ -3,6 +3,7 @@
 import React from 'react';
 import {Table, Button} from 'react-bootstrap';
 import DeletBtnComponent from './DeletBtnComponent';
+import EditBtnComponent from './EditBtnComponent';
 
 require('styles/frontViewComponent/table/TableBody.css');
 
@@ -49,9 +50,7 @@ class TableBodyComponent extends React.Component {
               <td>{item.Description}</td>
               <td><Button bsStyle={item.Status?"success":"default"} onClick={()=>this.statusEdit(item)} ref={(buttonDOM) => { this.buttonDOM = buttonDOM; }}>{item.Status?'Available':'Unavailable'}</Button></td>
               <td>
-                <Button>
-                  <i className="fa fa-pencil-square-o " aria-hidden="true " />
-                </Button>
+                <EditBtnComponent {...this.props} item={item} />
                 <DeletBtnComponent {...this.props} item={item} />
               </td>
             </tr>

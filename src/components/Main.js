@@ -84,8 +84,8 @@ class AppComponent extends React.Component {
         if(key) {
             console.log(this.state.filterList);
             this.setState({filtering: true})
-        };
-    }  
+        }
+    } 
     render() {
         return (
             <div className = "index" >
@@ -94,7 +94,7 @@ class AppComponent extends React.Component {
                                     filterList={this.state.filterList}
                                     handleStatus={(item)=>this.handleStatus(item)}
                                     stockHandle={(item, v)=>this.stockHandle(item, v)}
-                                    deleteHandle={(v)=> this.deleteHandle(v)} 
+                                    deleteHandle={(v)=> this.deleteHandle(v)}
                                     handleSearch={(key)=>this.handleSearch(key)} />
                 {this.state.showTop?<TopBtnComponent />:null}
                 

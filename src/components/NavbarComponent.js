@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {Nav, NavDropdown, NavItem, MenuItem} from 'react-bootstrap';
+import {Nav,NavItem} from 'react-bootstrap';
 
 require('styles//Navbar.css');
 

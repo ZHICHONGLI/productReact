@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import {Button, PanelGroup, Panel} from 'react-bootstrap';
 import PanelHeaderComponent from './table/PanelHeaderComponent';
 import TableBodyComponent from './table/TableBodyComponent';
 
