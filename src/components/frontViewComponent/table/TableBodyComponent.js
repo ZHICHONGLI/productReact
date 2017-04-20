@@ -42,8 +42,8 @@ class TableBodyComponent extends React.Component {
               </td>
               <td className={this.state.activeItem == item? '':'hide'}>
                 <span><input type="number" className="form-control stockinput" placeholder={item.Stock} value={this.state.stockValue} onChange={this.handleChange.bind(this)}></input></span>
-                <span className="stock" onClick={()=>this.stockUpdate(item, this.state.stockValue)}>update </span>
-                |
+                <span className={this.state.stockValue?'stock':'hide'} onClick={()=>this.stockUpdate(item, this.state.stockValue)}>update </span>
+                <span className={this.state.stockValue?'':'hide'}>|</span>
                 <span className="stock" onClick={()=>this.setState({activeItem:{}, stockValue:''})}> cancel</span>
               </td>
               <td>{item.Packing}</td>
