@@ -28,7 +28,9 @@ class TableBodyComponent extends React.Component {
     this.setState({activeItem:{},stockValue:''})
   }
   handleChange(event){
-    this.setState({stockValue: event.target.value})
+    event.target.value>=0?
+    this.setState({stockValue: event.target.value}):
+    undefined
   }
   tbBody(item){
     let idx = this.props.dataList.indexOf(item)+1;
