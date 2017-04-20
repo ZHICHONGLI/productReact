@@ -28,7 +28,7 @@ class DeletBtnComponent extends React.Component {
             <Modal.Title>Delete</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Please confirm delete
+            <p id="dlconfirm">Please confirm delete</p>
           </Modal.Body>
           <Modal.Footer>
             <Button bsStyle="danger" onClick={this.delete.bind(this)}>Delete</Button>
