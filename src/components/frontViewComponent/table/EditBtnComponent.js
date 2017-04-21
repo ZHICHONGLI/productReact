@@ -9,22 +9,21 @@ class EditBtnComponent extends React.Component {
   constructor(props) {
   super(props);
   let originalItem = Object.assign({},this.props.item);
+  let idx = this.props.dataList.findIndex(x=>x.id == originalItem.id);
+  let original = this.props.dataList[idx];
   this.state ={
     showModal : false,
-    item : originalItem,
+    item : original,
     orgItem: originalItem
     }
-  }
-  componentWillUnmount(){
-    let originalItem = Object.assign({},this.props.item);
-    this.setState({item: originalItem})
   }
   close() {
     let original = Object.assign({}, this.props.item); //alway keep props.item untouched and next time state.item will be original value
     this.setState({ showModal: false, item: original});
   }
   open() {
-    this.setState({ showModal: true});
+    let original = Object.assign({}, this.props.item);
+    this.setState({ showModal: true, item: original});
   }
   save() {
     //console.dir(this.state.item)
