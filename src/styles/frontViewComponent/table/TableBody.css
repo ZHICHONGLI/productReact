@@ -1,6 +1,4 @@
-.tablebody-component {
-  border: 1px dashed #f00;
-}
+
 .stock:hover{
   background-color: lightgreen;
   cursor: pointer;
