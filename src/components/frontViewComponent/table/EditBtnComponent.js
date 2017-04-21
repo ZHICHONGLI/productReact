@@ -15,7 +15,10 @@ class EditBtnComponent extends React.Component {
     orgItem: originalItem
     }
   }
-  
+  componentWillUnmount(){
+    let originalItem = Object.assign({},this.props.item);
+    this.setState({item: originalItem})
+  }
   close() {
     let original = Object.assign({}, this.props.item); //alway keep props.item untouched and next time state.item will be original value
     this.setState({ showModal: false, item: original});
@@ -24,7 +27,13 @@ class EditBtnComponent extends React.Component {
     this.setState({ showModal: true});
   }
   save() {
-    console.dir(this.state.item)
+    //console.dir(this.state.item)
+    this.props.editHandle(this.state.item);
+    this.setState({showModal:false})
+  }
+  status(boolean){
+    this.state.item.Status = boolean;
+    this.setState({item:this.state.item})
   }
   inputHandle(event, propName){
     if(propName=='Price'||propName=='Stock'){
@@ -80,10 +89,10 @@ class EditBtnComponent extends React.Component {
             <div className="input-group">
               <label>Status:</label>
               <div className="radio">
-                <label><input type="radio" name="optradio" checked={this.props.item.Status==true} onChange={()=>this.state.item.Status=true} /> Available</label>
+                <label><input type="radio" name="optradio" checked={this.state.item.Status==true} onChange={()=>this.status(true)} /> Available</label>
               </div>
               <div className="radio">
-                <label><input type="radio" name="optradio" checked={this.props.item.Status==false}  onChange={()=>this.state.item.Status=false} /> Unavailable</label>
+                <label><input type="radio" name="optradio" checked={this.state.item.Status==false}  onChange={()=>this.status(false)} /> Unavailable</label>
               </div>
             </div>
           </Modal.Body>
