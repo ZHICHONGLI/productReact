@@ -10,6 +10,7 @@ class AddBtnComponent extends React.Component {
     super(props);
     this.state ={
       showModal : false,
+      saveValid: false,
       item : {"Name":'', "Price":undefined, "Stock":undefined, "Packing":'', "Description":'', "Status":undefined}
     }
   }
@@ -33,8 +34,14 @@ class AddBtnComponent extends React.Component {
     }else{
       this.state.item[propName] = event.target.value;
     }
+    if(propName == 'Name'){
+        if(event.target.value){
+          this.setState({saveValid:true})
+        }else{
+          this.setState({saveValid:false})
+        }
+    }
   }
-  
   render() {
     let modalEl = <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
       <Modal.Header closeButton>
@@ -71,7 +78,7 @@ class AddBtnComponent extends React.Component {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button bsStyle="success" onClick={this.save.bind(this)}>Save</Button>
+        <Button bsStyle="success" disabled={!this.state.item.Name} onClick={this.save.bind(this)}>Save</Button>
         <Button onClick={this.close.bind(this)}>Close</Button>
       </Modal.Footer>
     </Modal>;
